@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-<<<<<<< HEAD
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,20 +15,18 @@ use App\Http\Controllers\RoleController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-=======
->>>>>>> origin/main
 
-Route::get('/', function () {
-    return view('welcome');
-});
-<<<<<<< HEAD
+// Routes for ProductController
+Route::get('/', [ProductController::class, 'index'])->name('index');
+Route::post('/store', [ProductController::class, 'store'])->name('store');
+Route::get('/edit/{product}', [ProductController::class, 'edit'])->name('edit');
+Route::put('/update/{product}', [ProductController::class, 'update'])->name('update');
 
-
+// Routes for User and Role Controllers
 Route::resource('users', UserController::class);
 Route::resource('roles', RoleController::class);
 
 Route::get('/login', [UserController::class, 'indexlogin'])->name('admin');
 Route::post('/login', [UserController::class, 'login'])->name('login');
-// Route::get('/logout', [UserController::class, 'logout'])->name('logout');
-=======
->>>>>>> origin/main
+
+// Note: If you have other routes, make sure to include them as well
